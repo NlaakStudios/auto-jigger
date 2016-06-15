@@ -1,5 +1,5 @@
 <!-- AUTO JIGGER - BEGIN DOC -->
-<html lang=en class="dpiScale">
+<html lang=en class="dpiScale" ng-app="ajApp" >
    <head>
       <meta charset="utf-8">
       <title>Auto Jigger Static Template</title>
@@ -79,13 +79,12 @@
 			return"undefined"!=typeof a&&null!=a&&null!=a.nextElementSibling?(a.nextElementSibling.insertBefore(b),!0):!1}()},h:function(a){if(T$&&"DIV"==T$.tagName&&a&&"Array"===a.constructor.name){var e,c;AJ$.LOADING=a.length;AJ$.LOADED=0;cls("logo","add","appear");cls("wrapper","add","vanish","");do e=a.shift(),c=AJ$.FILES.indexOf(e),-1===c&&(lds(gex(e),gfn(e),e,"js"==gex(e)?!0:!1,"last",AJ$.j,null),AJ$.FILES.push(e));while(0<a.length)}},l:function(a){return!(null===a||"undefined"===typeof a||!1===a||""===
 			a)},a:function(a,e){return this.vld(a)?a:e},c:function(a){return D$.getElementById(a)},b:function(a,e,c,d){try{if(a="string"!=typeof a?a:gei(a))switch(e.toLowerCase()){case "set":a.className=c;break;case "clear":a.className="";break;case "add":a.classList.add(c);break;case "remove":try{a.classList.remove(c)}catch(f){}break;case "replace":try{a.classList.remove(c)}catch(f){}try{a.classList.add(d)}catch(f){}break;case "toggle":a.classList.toggle(c)}}catch(f){alert(f)}},f:function(a){return"undefined"===
 			typeof a||""==a?"":/(?:\.([^.]+))?$/.exec(a)[1].toLowerCase()},g:function(a){if("string"===typeof a)return a.substring(a.lastIndexOf("/")+1)},j:function(){AJ$.LOADED++;AJ$.LOADED===AJ$.LOADING&&(AJ$.READY?AJ$.READY=!0:AJ$.READY||"function"!=typeof window.AutoJiggerReady||(window.AutoJiggerReady(),AJ$.READY=!0));AJ$.READY&&(cls("logo","replace","appear","vanish"),cls("wrapper","replace","vanish","appear"))},FILES:[],READY:!1};W$.vld=d.l;W$.chk=d.a;W$.gei=d.c;W$.cls=d.b;W$.gex=d.f;W$.gfn=d.g;W$.lds=
-			d.i;W$.las=d.h;W$.lds("js","jquery","https://code.jquery.com/jquery-2.2.4.min.js",!0,"last",function(){W$.las(["https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js","https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css","https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css","https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"])},null);return d}();			
-			
+			d.i;W$.las=d.h;W$.lds("js","jquery","https://code.jquery.com/jquery-2.2.4.min.js",!0,"last",function(){W$['las'](['https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/Rx.js','https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js','https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css','https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css','https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js'])},null);return d}();
 			/**
 			* AutoJiggerReady() is not required if you do not want to do anything after its ready. This is the correct way to load page specific scripts though.
 			*/
             function AutoJiggerReady() {
-            	//las(['assets/css/style.css','assets/js/scripts.js']); //Load up you page scripts/misc files
+            	//las(['assets/js/app.js']); //Load up you page scripts/misc files
             }
          </script>		 
       </div>
