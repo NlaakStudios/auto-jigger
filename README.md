@@ -1,5 +1,5 @@
 # Auto Jigger
-A simple tool for web developers to which automatically handles the inclusion of Modernizr, jQuery, Bootstrap and Font-Awesome into  web page.
+A simple tool for web developers that properly and automatically handles the inclusion of Modernizr, jQuery, Bootstrap and Font-Awesome into web pages providing the best possible performance with lowest bandwidth.
 
 ### Features
 
