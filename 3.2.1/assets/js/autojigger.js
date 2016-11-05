@@ -81,12 +81,15 @@ AJ$ = (function () {
 	W$['S$']=D$.scripts;
 	
 	var AutoJigger = {
-		VERSION 	: '3.2.1',		//Current Library Version
-		LOADING 	: 0,			//Number of files currenty loading
-		LOADED 		: 0,			//Number of file that have been loaded
-		FILES 		: [],			//Array of processed files			
-		READY		: false,		//Set TRUE when all files loaded & processed.
-		SHOWLOADER	: false,		//Used to override showing the Logo/Brand Loader
+		VERSION 		: '3.2.1',		//Current Library Version
+		LOADING 		: 0,			//Number of files currenty loading
+		LOADED 			: 0,			//Number of file that have been loaded
+		FILES 			: [],			//Array of processed files			
+		READY			: false,		//Set TRUE when all files loaded & processed.
+		SHOWLOADER		: false,		//Used to override showing the Logo/Brand Loader
+		ANGULAR_LOADED	: false,		//Will be true is the Angular 2 Framework was loaded.
+		BACKBONE_LOADED	: false,		//Will be set to true is the Backbone Framework is loaded.
+		REACT_LOADED	: false,		//Will be set to true is React Framework is loaded.
 		
 						
 		/**
@@ -94,20 +97,20 @@ AJ$ = (function () {
 		 * No other file formats are supported.
 		 *
 		 * @method lds
-		 * @param {string} $fileType 	either script or link
+		 * @param {string} $filetype 	either script or link
 		 * @param {string} $id 			element ID of this file
 		 * @param {string} $url 		full path to file, local or remote
 		 * @param {boolean} $tail		set to true if you want script loaded into tail.
 		 * @param {string} $after 		make sure loaded file is after this given file
-		 * @param {function} $onLoad 	optional
-		 * @param {function} $onError 	optional
+		 * @param {Function} $onLoad 	optional
+		 * @param {Function} $onError 	optional
 		 * @memberof AutoJigger
 		 * @export
 		 */
 		lds : function ($filetype, $id, $url, $tail, $after, $onLoad, $onError) {
 			
 			function _onLoaded() {
-				console.log('File load successful.');			
+				console.log('File ' + AJ$.gfn($url) + ' load successful.');			
 			}
 
 			function _onErrored() {
@@ -152,16 +155,25 @@ AJ$ = (function () {
 			}
 
 			if (arguments[0] == 'script'||arguments[0] == 'js') {
+				/**[Standard JavaScript File]**/
 				a = D$.createElement('script');
 				a.async = 0;
 				a.src = $url; 
 				a.type = 'application/javascript';
+			} else if (arguments[0] == 'script'||arguments[0] == 'jsx') {
+				/**[ReactJS JSX JavaScript File]**/
+				a = D$.createElement('script');
+				a.async = 0;
+				a.src = $url; 
+				a.type = 'text/jsx';
 			} else if (arguments[0] == 'link'||arguments[0] == 'css') {
+				/**[Standard Cascading Stylesheet File]**/
 				a= D$.createElement('link');
 				a.href = $url;
 				a.rel = 'stylesheet';
 				a.type = 'text/css';
 			} else if (arguments[0] == 'html') {
+				/**[HTML5 Content File - No <HTML>,<HEAD>,<BODY> .. Just content]**/
 				//Define path to html to include
 				d=location.pathname + 'html/' + gfn($url) + '.inc' + gex($url);
 				return true;
@@ -180,7 +192,7 @@ AJ$ = (function () {
 		 * called to load a list of files.
 		 *
 		 * @method las
-		 * @param {Array} files	all scripts to be loaded.
+		 * @param {Array} filelist	all scripts to be loaded.
 		 * @memberof AutoJigger
 		 * @export
 		 */			
@@ -207,9 +219,9 @@ AJ$ = (function () {
 								gex(fn),
 								gfn(fn), 
 								fn, 
-								((gex(fn)=='js')?true:false),
+								((gex(fn)=='js'||gex(fn)=='jsx')?true:false),
 								'last',
-								AJ$.onFileLoaded, 
+								AJ$.onFileLoaded(gfn(fn).toLowerCase()),
 								null
 							);
 							AJ$['FILES'].push(fn);
@@ -351,8 +363,33 @@ AJ$ = (function () {
 				
 				if (!AJ$['READY']) {
 					if (!AJ$['READY'] && typeof(window['AutoJiggerReady']) == "function") {
-						window['AutoJiggerReady']();
-						AJ$['READY']=true;
+						if (typeof(window['AutoJiggerUse']) == "function") {
+							var framework = window['AutoJiggerUse']();
+							framework = framework.toLowerCase();
+							if (framework=='angularjs'&&!AJ$.ANGULAR_LOADED) {
+								W$['las']([
+									'https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.40/system.js',
+									'https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2.min.js',
+									'assets/angularjs/js/systemjs.config.js'
+								]);
+								AJ$['READY'] = AJ$.ANGULAR_LOADED = true;
+							} else if (framework=='backbonejs'&&!AJ$.BACKBONE_LOADED) {
+								W$['las']([
+									'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js',
+									'https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js'
+								]);
+								AJ$['READY'] = AJ$.BACKBONE_LOADED = true;
+							} else if (framework=='reactjs'&&!AJ$.REACT_LOADED) {
+								W$['las']([
+									'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js',
+									'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js'
+								]);
+								AJ$['READY'] = AJ$.REACT_LOADED = true;
+							}
+						} else {
+							window['AutoJiggerReady']();
+							AJ$['READY']=true;							
+						}
 					}
 				} else {
 					AJ$['READY']=true;
@@ -403,9 +440,9 @@ AJ$ = (function () {
 		function(){
 			W$['las']([
 				'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
-				'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css',
-				'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css',
-				'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'
+				'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+				'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+				'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
 			])
 		}, 
 		null

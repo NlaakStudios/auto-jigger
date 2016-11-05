@@ -2,7 +2,7 @@
 <html lang=en class="dpiScale">
 	<head>
 		<meta charset="utf-8">
-		<title>Auto Jigger Static Template</title>
+		<title>Auto Jigger AngularJS Example</title>
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -24,65 +24,39 @@
 	</head>
 	<body class="layout-light">
 		<!-- AUTO JIGGER - BRAND/LOGO/SITENAME -->
-		<div id="logo" class="centered">
-			<p>A U T O   J I G G E R</p>
+		<div id="logo" class="centered appear">
+			<p>AngularJS</p>
 			<div id="loader" class="loader"></div>
 		</div>
-		<!-- AUTO JIGGER - END DOC -->
-		<div id="wrapper">
+		<!-- AUTO JIGGER - BEGIN DOC -->
+		<div id="wrapper" class="vanish">
 			<!-- USER CODE BEGIN -->
 			<div class="container">
-				<div class="row">
+				<header class="row">
 					<div class="col-lg-12 text-center v-center">
 						<p>
 						<hr>
 						</p>
-						<h1>Auto Jigger! Prototype</h1>
+						<h1>Auto Jigger! AngularJS Example</h1>
 						<p>
 						<hr>
 						</p>
 						<p class="lead">This is just a test bed for the i2tm Labs Auto Jigger! Web Application Framework.</p>
 					</div>
-				</div>
+				</header>
 				<!-- /row -->
-				<div class="row">				
-					<p class="formatted">The framework uses Bootstrap, Font-Awesome, jQuery and the latest custom coding to reach maximum performance and responsivness giving the ability to run on more devices seamlessly.</p>
-					
-					<div class="panel panel-default">
-					  <div class="panel-heading">
-						<h3 class="panel-title text-center">Supports any third party Framework</h3>
-					  </div>
-					  <div class="panel-body">
-						<div class="supported">
-							<ul class="nav nav-pills" style="float:none;display:inline-block;text-align:center">
-							  <li role="presentation"><a href="reactjs.html"><i class="fa fa-code" aria-hidden="true"></i> React.JS Example</a></li>
-							  <li role="presentation"><a href="angularjs.html"><i class="fa fa-code" aria-hidden="true"></i> Angular.JS Example</a></li>
-							  <li role="presentation"><a href="backbonejs.html"><i class="fa fa-code" aria-hidden="true"></i> Backbone.JS Example</a></li>
-							</ul>						
-						</div>
-					  </div>
-					</div>
-					
-					<p class="text-center">
-						<a href="//developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fi2tmlabs.com%2Fmaestro%2F" target="_blank" class="btn btn-success"><i class="fa fa-fighter-jet" aria-hidden="true"></i> Check out the performace</a>
-						or 
-						<a href="//i2tmlabs.com/" class="btn btn-primary"><i class="fa fa-external-link-square" aria-hidden="true"></i> Go to I2TM Labs</a>
-					</p>
-					<p>
-					<hr>
-					</p>
-					<form class="col-lg-12">
-						<div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
-							<input type="text" class="center-block form-control input-lg" title="Enter you email." placeholder="Enter your email address">
-							<span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
-						</div>
-					</form>
-				</div>
-				<div class="row">
+				<section class="row">
+					<p class="formatted">The framework uses Bootstrap, Font-Awesome, jQuery,React.JS and the latest custom coding to reach maximum performance and responsivness giving the ability to run on more devices seamlessly.</p>
+					<my-app>Loading...</my-app>
+					<p style="text-align:center">
+						<a href="index.html" class="btn btn-large btn-primary">Home</a>
+					</p>					
+				</section>
+				<section class="row">
 					<div class="col-lg-12 text-center v-center" style="font-size:39pt;">
 						<a href="#"><i class="icon-google-plus"></i></a> <a href="#"><i class="icon-facebook"></i></a>  <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-github"></i></a> <a href="#"><i class="icon-pinterest"></i></a>
 					</div>
-				</div>
+				</section>
 				<br><br><br><br><br>
 				<footer class="row">
 					<p style="text-align:center"><small><i class="fa fa-copyright" aria-hidden="true"></i> Copyright 2016 by I2TM Labs</small></p>
@@ -94,7 +68,7 @@
 		<!--[This is a hidden DIV with all JavaScript before closing body tag]-->
 		<div id="tail" class="vanish">
 			<script type="application/javascript" id="auto-jigger-js">
-				/** Auto Jigger v3.2.1 Copyright 2016 by I2TM Labs - Apache 2.0 License **/			
+				/** Auto Jigger v3.2.1 Copyright 2016 by I2TM Labs - Apache 2.0 License **/	
 				AJ$=function(){window.W$=window;W$.D$=W$.document;W$.H$=D$.getElementsByTagName("head")[0];W$.T$=D$.getElementById("tail");W$.B$=D$.getElementsByTagName("body")[0];W$.C$=D$.styleSheets;W$.S$=D$.scripts;var e={VERSION:"3.2.1",LOADING:0,LOADED:0,a:!1,b:!1,c:!1,m:function(a,d,c,e,f,h,k){function l(){console.log("File "+AJ$.f(c)+" load successful.")}function m(){console.log("File load failed.")}for(var b,g=0;3>g;g++)arguments[g]=chk(arguments[g],!1),!1===arguments[g]&&console&&console.log("Error");if("script"==
 				arguments[0]||"js"==arguments[0])b=D$.createElement("script"),b.async=0,b.src=c,b.type="application/javascript";else if("script"==arguments[0]||"jsx"==arguments[0])b=D$.createElement("script"),b.async=0,b.src=c,b.type="text/jsx";else if("link"==arguments[0]||"css"==arguments[0])b=D$.createElement("link"),b.href=c,b.rel="stylesheet",b.type="text/css";else return"html"==arguments[0]?(gfn(c),gex(c),!0):!1;b.id=arguments[1];b.onload=h?h:l.bind(this);b.onerror=k?k:m.bind(this);return function(){var a=
 				!0===e?T$:H$;"string"!=typeof f&&(f="last");if("first"==f)return a.firstElementChild(b),!0;if("last"==f)return a.appendChild(b),!0;a=gei(f);return"undefined"!=typeof a&&null!=a&&null!=a.nextElementSibling?(a.nextElementSibling.insertBefore(b),!0):!1}()},l:function(a){if(T$&&"DIV"==T$.tagName&&a&&"Array"===a.constructor.name){var d,c;AJ$.LOADING=a.length;AJ$.LOADED=0;cls("wrapper","add","vanish","");1==AJ$.SHOWLOADER&&cls("logo","add","appear");do d=a.shift(),c=AJ$.FILES.indexOf(d),-1===c&&(lds(gex(d),
@@ -107,19 +81,13 @@
 				/**
 				* AutoJiggerUse() is not required if you do not want to load AngularJS, BackboneJS or ReactJS automatically.
 				*/
-				//function AutoJiggerUse() {
-					//return 'AngularJS';
-					//or
-					//return 'BackboneJS';
-					//or
-					//return 'ReactJS';
-				//}
-				
+				function AutoJiggerUse() {return 'AngularJS'}
+
 				/**
 				* AutoJiggerReady() is not required if you do not want to do anything after its ready. This is the correct way to load page specific scripts though.
 				*/
 				function AutoJiggerReady() {
-					las(['assets/css/index.css']); //Load up you page scripts/misc files
+					System.import('app').catch(function(err){ console.error(err); });
 				}
 			</script>		 
 		</div>
