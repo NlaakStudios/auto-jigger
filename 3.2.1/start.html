@@ -2,7 +2,7 @@
 <html lang=en class="dpiScale">
 	<head>
 		<meta charset="utf-8">
-		<title>Auto Jigger AngularJS Example</title>
+		<title>Auto Jigger Starter Template</title>
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -25,74 +25,44 @@
 	<body class="layout-light vanish">
 		<!-- AUTO JIGGER - BRAND/LOGO/SITENAME -->
 		<div id="logo" class="centered vanish">
-			<p>AngularJS</p>
+			<p>My Brand</p>
 			<div id="loader" class="loader"></div>
 		</div>
-		<!-- AUTO JIGGER - BEGIN DOC -->
+		<!-- AUTO JIGGER - END DOC -->
 		<div id="wrapper">
-			<!-- USER CODE BEGIN -->
-			<div class="container">
-				<header class="row">
-					<div class="col-lg-12 text-center v-center">
-						<p>
-						<hr>
-						</p>
-						<h1>Auto Jigger! AngularJS Example</h1>
-						<p>
-						<hr>
-						</p>
-						<p class="lead">This is just a test bed for the i2tm Labs Auto Jigger! Web Application Framework.</p>
-					</div>
-				</header>
-				<!-- /row -->
-				<section class="row">
-					<p class="formatted">The framework uses Bootstrap, Font-Awesome, jQuery,React.JS and the latest custom coding to reach maximum performance and responsivness giving the ability to run on more devices seamlessly.</p>
-					<my-app>Loading...</my-app>
-					<p style="text-align:center">
-						<a href="index.html" class="btn btn-large btn-primary">Home</a>
-					</p>					
-				</section>
-				<section class="row">
-					<div class="col-lg-12 text-center v-center" style="font-size:39pt;">
-						<a href="#"><i class="icon-google-plus"></i></a> <a href="#"><i class="icon-facebook"></i></a>  <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-github"></i></a> <a href="#"><i class="icon-pinterest"></i></a>
-					</div>
-				</section>
-				<br><br><br><br><br>
-				<footer class="row">
-					<p style="text-align:center"><small><i class="fa fa-copyright" aria-hidden="true"></i> Copyright 2016 by I2TM Labs</small></p>
-				</footer>
-			</div>
+			<h1 class="text-center">Your Content Here!</h1>
 		</div>
 		<!-- USER CODE END -->
 		<!-- AUTO JIGGER - END DOC -->
 		<!--[This is a hidden DIV with all JavaScript before closing body tag]-->
 		<div id="tail" class="vanish">
 			<script type="application/javascript" id="auto-jigger-js">
-				AJ$=function(){window.W$=window;W$.D$=W$.document;W$.H$=D$.getElementsByTagName("head")[0];W$.T$=D$.getElementById("tail");W$.B$=D$.getElementsByTagName("body")[0];W$.C$=D$.styleSheets;W$.S$=D$.scripts;var b={VERSION:"3.2.1",_ONREADY:void 0,LOADING:0,LOADED:0,FILES:[],FRAMEWORK:"",READY:!1,SHOWLOADER:!1,ANGULAR_LOADED:!1,BACKBONE_LOADED:!1,REACT_LOADED:!1,lds:function(a,b,d,e,f,h,k){function l(){console.log("File "+AJ$.gfn(d)+" load successful.")}function m(){console.log("File load failed.")}for(var c,
-				g=0;3>g;g++)arguments[g]=chk(arguments[g],!1),!1===arguments[g]&&console&&console.log("Error");if("script"==arguments[0]||"js"==arguments[0])c=D$.createElement("script"),c.async=0,c.src=d,c.type="application/javascript";else if("script"==arguments[0]||"jsx"==arguments[0])c=D$.createElement("script"),c.async=0,c.src=d,c.type="text/jsx";else if("link"==arguments[0]||"css"==arguments[0])c=D$.createElement("link"),c.href=d,c.rel="stylesheet",c.type="text/css";else return"html"==arguments[0]?(gfn(d),gex(d),
-				!0):!1;c.id=arguments[1];c.onload=h?h:l.bind(this);c.onerror=k?k:m.bind(this);return function(){var a=!0===e?T$:H$;"string"!=typeof f&&(f="last");if("first"==f)return a.firstElementChild(c),!0;if("last"==f)return a.appendChild(c),!0;a=gei(f);return"undefined"!=typeof a&&null!=a&&null!=a.nextElementSibling?(a.nextElementSibling.insertBefore(c),!0):!1}()},las:function(a){if(T$&&"DIV"==T$.tagName&&a&&"Array"===a.constructor.name){var b,d;AJ$.LOADING=a.length;AJ$.LOADED=0;cls(B$,"add","vanish","");1==
-				AJ$.SHOWLOADER&&cls("logo","add","appear");do b=a.shift(),d=AJ$.FILES.indexOf(b),-1===d&&(lds(gex(b),gfn(b),b,"js"==gex(b)||"jsx"==gex(b)?!0:!1,"last",AJ$.onFileLoaded(gfn(b).toLowerCase()),null),AJ$.FILES.push(b));while(0<a.length);AJ$.LOADING=a.length}},vld:function(a){return!(null===a||"undefined"===typeof a||!1===a||""===a)},chk:function(a,b){return this.vld(a)?a:b},gei:function(a){return D$.getElementById(a)},cls:function(a,b,d,e){try{if(a="string"!=typeof a?a:this.gei(a))switch(b.toLowerCase()){case "set":a.className=
-				d;break;case "clear":a.className="";break;case "add":a.classList.add(d);break;case "remove":try{a.classList.remove(d)}catch(f){}break;case "replace":try{a.classList.remove(d)}catch(f){}try{a.classList.add(e)}catch(f){}break;case "toggle":a.classList.toggle(d)}}catch(f){alert(f)}},gex:function(a){return"undefined"===typeof a||""==a?"":/(?:\.([^.]+))?$/.exec(a)[1].toLowerCase()},gfn:function(a){if("string"===typeof a)return a.substring(a.lastIndexOf("/")+1)},onFileLoaded:function(a){AJ$.LOADED++;AJ$.LOADED===
-				AJ$.LOADING&&((AJ$.LOADING=0,AJ$.READY)?AJ$.READY=!0:!AJ$.READY&&AJ$.vld(AJ$.FRAMEWORK)?"angularjs"!=AJ$.FRAMEWORK||AJ$.ANGULAR_LOADED?"backbonejs"!=AJ$.FRAMEWORK||AJ$.BACKBONE_LOADED?"reactjs"!=AJ$.FRAMEWORK||AJ$.REACT_LOADED||(W$.las(["https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js","https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"]),AJ$.READY=AJ$.REACT_LOADED=!0):(W$.las(["https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js","https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"]),
-				AJ$.READY=AJ$.BACKBONE_LOADED=!0):(W$.las(["https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.40/system.js","https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2.min.js","assets/angularjs/js/systemjs.config.js"]),AJ$.READY=AJ$.ANGULAR_LOADED=!0):(typeof("function"===AJ$._ONREADY)&&AJ$._ONREADY(),AJ$.READY=!0));AJ$.READY&&(1==AJ$.SHOWLOADER&&AJ$.cls("logo","replace","appear","vanish"),AJ$.cls(B$,"replace","vanish","appear"))}};W$.vld=b.vld;W$.chk=b.chk;W$.gei=b.gei;W$.cls=b.cls;
-				W$.gex=b.gex;W$.gfn=b.gfn;W$.lds=b.lds;W$.las=b.las;if("function"==typeof window.AutoJiggerConfig){var e=window.AutoJiggerConfig();W$.vld(e)&&(W$.vld(e.showloader)&&(b.SHOWLOADER=e.showloader),W$.vld(e.framework)&&(b.FRAMEWORK=e.framework.toLowerCase()),W$.vld(e.onready)&&"function"===typeof e.onready?b._ONREADY=e.onready:b._ONREADY=function(){})}b.SHOWLOADER?b.cls("logo","replace","vanish","appear"):b.cls("logo","replace","appear","vanish");b.FILES=[];b.READY=!1;b.SHOWLOADER=!1;W$.lds("js","jquery",
-				"https://code.jquery.com/jquery-2.2.4.min.js",!0,"last",function(){W$.las(["https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js","https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css","https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css","https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"])},null);return b}();
-
+				/** Auto Jigger v3.2.1 Copyright 2016 by I2TM Labs - Apache 2.0 License **/			
+				AJ$=function(){window.W$=window;W$.D$=W$.document;W$.H$=D$.getElementsByTagName("head")[0];W$.T$=D$.getElementById("tail");W$.B$=D$.getElementsByTagName("body")[0];W$.C$=D$.styleSheets;W$.S$=D$.scripts;var b={VERSION:"3.2.1",F:void 0,LOADING:0,LOADED:0,B:[],a:"",C:!1,D:!1,b:!1,c:!1,f:!1,v:function(a,b,d,e,f,h,k){function l(){console.log("File "+AJ$.h(d)+" load successful.")}function m(){console.log("File load failed.")}for(var c,g=0;3>g;g++)arguments[g]=chk(arguments[g],!1),!1===arguments[g]&&console&&
+				console.log("Error");if("script"==arguments[0]||"js"==arguments[0])c=D$.createElement("script"),c.async=0,c.src=d,c.type="application/javascript";else if("script"==arguments[0]||"jsx"==arguments[0])c=D$.createElement("script"),c.async=0,c.src=d,c.type="text/jsx";else if("link"==arguments[0]||"css"==arguments[0])c=D$.createElement("link"),c.href=d,c.rel="stylesheet",c.type="text/css";else return"html"==arguments[0]?(gfn(d),gex(d),!0):!1;c.id=arguments[1];c.onload=h?h:l.bind(this);c.onerror=k?k:m.bind(this);
+				return function(){var a=!0===e?T$:H$;"string"!=typeof f&&(f="last");if("first"==f)return a.firstElementChild(c),!0;if("last"==f)return a.appendChild(c),!0;a=gei(f);return"undefined"!=typeof a&&null!=a&&null!=a.nextElementSibling?(a.nextElementSibling.insertBefore(c),!0):!1}()},u:function(a){if(T$&&"DIV"==T$.tagName&&a&&"Array"===a.constructor.name){var b,d;AJ$.LOADING=a.length;AJ$.LOADED=0;cls(B$,"add","vanish","");1==AJ$.SHOWLOADER&&cls("logo","add","appear");do b=a.shift(),d=AJ$.FILES.indexOf(b),
+				-1===d&&(lds(gex(b),gfn(b),b,"js"==gex(b)||"jsx"==gex(b)?!0:!1,"last",AJ$.w(gfn(b).toLowerCase()),null),AJ$.FILES.push(b));while(0<a.length);AJ$.LOADING=a.length}},j:function(a){return!(null===a||"undefined"===typeof a||!1===a||""===a)},l:function(a,b){return this.vld(a)?a:b},g:function(a){return D$.getElementById(a)},m:function(a,b,d,e){try{if(a="string"!=typeof a?a:this.g(a))switch(b.toLowerCase()){case "set":a.className=d;break;case "clear":a.className="";break;case "add":a.classList.add(d);break;
+				case "remove":try{a.classList.remove(d)}catch(f){}break;case "replace":try{a.classList.remove(d)}catch(f){}try{a.classList.add(e)}catch(f){}break;case "toggle":a.classList.toggle(d)}}catch(f){alert(f)}},s:function(a){return"undefined"===typeof a||""==a?"":/(?:\.([^.]+))?$/.exec(a)[1].toLowerCase()},h:function(a){if("string"===typeof a)return a.substring(a.lastIndexOf("/")+1)},w:function(){AJ$.LOADED++;AJ$.LOADED===AJ$.LOADING&&((AJ$.LOADING=0,AJ$.READY)?AJ$.READY=!0:!AJ$.READY&&AJ$.j(AJ$.a)?"angularjs"!=
+				AJ$.a||AJ$.b?"backbonejs"!=AJ$.a||AJ$.c?"reactjs"!=AJ$.a||AJ$.f||(W$.las(["https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js","https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"]),AJ$.READY=AJ$.f=!0):(W$.las(["https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js","https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"]),AJ$.READY=AJ$.c=!0):(W$.las(["https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.40/system.js","https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2.min.js",
+				"assets/angularjs/js/systemjs.config.js"]),AJ$.READY=AJ$.b=!0):(typeof("function"===AJ$._ONREADY)&&AJ$._ONREADY(),AJ$.READY=!0));AJ$.READY&&(1==AJ$.SHOWLOADER&&AJ$.cls("logo","replace","appear","vanish"),AJ$.cls(B$,"replace","vanish","appear"))}};if("function"==typeof window.AutoJiggerConfig){var e=window.AutoJiggerConfig();b.vld(e)&&(b.vld(e.A)&&(b.SHOWLOADER=e.A),b.vld(e.o)&&(b.FRAMEWORK=e.o.toLowerCase()),b.vld(e.i)&&"function"===typeof e.i?b._ONREADY=e.i:b._ONREADY=function(){})}b.SHOWLOADER?
+				b.cls("logo","replace","vanish","appear"):b.cls("logo","replace","appear","vanish");b.FILES=[];b.READY=!1;b.SHOWLOADER=!1;W$.vld=b.j;W$.chk=b.l;W$.gei=b.g;W$.cls=b.m;W$.gex=b.s;W$.gfn=b.h;W$.lds=b.v;W$.las=b.u;W$.lds("js","jquery","https://code.jquery.com/jquery-2.2.4.min.js",!0,"last",function(){W$.las(["https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js","https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css","https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+				"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"])},null);return b}();
+	
 				function AutoJiggerConfig() {
 					return cfg =
 					{
-						showloader:true,				//Set to true to display loader
-						framework:'angularjs',			//Select a native framework to load [angularjs,backbonejs,reactjs]
-						onReady:W$['AutoJiggerReady']	//Function to call when AutoJigger has completed.
+						showloader:false,	//Set to true to display loader
+						framework:'',		//Select a native framework to load [angularjs,backbonejs,reactjs]
+						onReady:null		//Function to call when AutoJigger has completed.
 					}
 				}	
 				
 				/**
 				* AutoJiggerReady() is not required if you do not want to do anything after its ready. This is the correct way to load page specific scripts though.
 				*/
-				function AutoJiggerReady() {
-					System.import('app').catch(function(err){ console.error(err); });
-				}
+				//function AutoJiggerReady() {
+				//	las(['assets/css/index.css']); //Load up you page scripts/misc files
+				//}
 			</script>		 
 		</div>
 	</body>

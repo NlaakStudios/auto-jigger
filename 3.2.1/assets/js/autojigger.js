@@ -81,17 +81,20 @@ AJ$ = (function () {
 	W$['S$']=D$.scripts;
 	
 	var AutoJigger = {
+		/**[Public]**/
 		VERSION 		: '3.2.1',		//Current Library Version
+		/**[TODO: Private]**/
+		_ONREADY		: undefined,
 		LOADING 		: 0,			//Number of files currenty loading
 		LOADED 			: 0,			//Number of file that have been loaded
-		FILES 			: [],			//Array of processed files			
+		FILES 			: [],			//Array of processed files		
+		FRAMEWORK		: '',			//Name of Native Framework.
 		READY			: false,		//Set TRUE when all files loaded & processed.
 		SHOWLOADER		: false,		//Used to override showing the Logo/Brand Loader
 		ANGULAR_LOADED	: false,		//Will be true is the Angular 2 Framework was loaded.
 		BACKBONE_LOADED	: false,		//Will be set to true is the Backbone Framework is loaded.
 		REACT_LOADED	: false,		//Will be set to true is React Framework is loaded.
-		
-						
+				
 		/**
 		 * Utility function for loading JavaScript or Stylesheets.
 		 * No other file formats are supported.
@@ -204,7 +207,7 @@ AJ$ = (function () {
 					AJ$.LOADING=filelist.length;
 					AJ$.LOADED=0;
 
-					cls('wrapper','add','vanish','');						
+					cls(B$,'add','vanish','');						
 					
 					//Show Loading Logo/Brand Animation
 					if (AJ$['SHOWLOADER'] == true) {
@@ -227,6 +230,7 @@ AJ$ = (function () {
 							AJ$['FILES'].push(fn);
 						}
 					}while(filelist.length>0);					
+					AJ$.LOADING=filelist.length;
 				}
 			}
 		},
@@ -295,7 +299,7 @@ AJ$ = (function () {
 				?
 				$el
 				:
-				gei($el);
+				this.gei($el);
 				
 				if (!$el) return;
 				switch ($action.toLowerCase()) {
@@ -360,36 +364,36 @@ AJ$ = (function () {
 		onFileLoaded : function(e) {
 			AJ$.LOADED++;
 			if (AJ$.LOADED === AJ$.LOADING) {
+				AJ$.LOADING = 0;
 				
 				if (!AJ$['READY']) {
-					if (!AJ$['READY'] && typeof(window['AutoJiggerReady']) == "function") {
-						if (typeof(window['AutoJiggerUse']) == "function") {
-							var framework = window['AutoJiggerUse']();
-							framework = framework.toLowerCase();
-							if (framework=='angularjs'&&!AJ$.ANGULAR_LOADED) {
-								W$['las']([
-									'https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.40/system.js',
-									'https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2.min.js',
-									'assets/angularjs/js/systemjs.config.js'
-								]);
-								AJ$['READY'] = AJ$.ANGULAR_LOADED = true;
-							} else if (framework=='backbonejs'&&!AJ$.BACKBONE_LOADED) {
-								W$['las']([
-									'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js',
-									'https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js'
-								]);
-								AJ$['READY'] = AJ$.BACKBONE_LOADED = true;
-							} else if (framework=='reactjs'&&!AJ$.REACT_LOADED) {
-								W$['las']([
-									'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js',
-									'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js'
-								]);
-								AJ$['READY'] = AJ$.REACT_LOADED = true;
-							}
-						} else {
-							window['AutoJiggerReady']();
-							AJ$['READY']=true;							
+					if (!AJ$['READY'] && AJ$.vld(AJ$.FRAMEWORK)) {
+						if (AJ$.FRAMEWORK=='angularjs'&&!AJ$.ANGULAR_LOADED) {
+							W$['las']([
+								'https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.40/system.js',
+								'https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2.min.js',
+								'assets/angularjs/js/systemjs.config.js'
+							]);
+							AJ$['READY'] = AJ$.ANGULAR_LOADED = true;
+						} else if (AJ$.FRAMEWORK=='backbonejs'&&!AJ$.BACKBONE_LOADED) {
+							W$['las']([
+								'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js',
+								'https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js'
+							]);
+							AJ$['READY'] = AJ$.BACKBONE_LOADED = true;
+						} else if (AJ$.FRAMEWORK=='reactjs'&&!AJ$.REACT_LOADED) {
+							W$['las']([
+								'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js',
+								'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js'
+							]);
+							AJ$['READY'] = AJ$.REACT_LOADED = true;
 						}
+					} else {
+						//window['AutoJiggerReady']();
+						if(typeof(AJ$['_ONREADY']==="function")) 
+							AJ$['_ONREADY']();
+							
+						AJ$['READY']=true;							
 					}
 				} else {
 					AJ$['READY']=true;
@@ -399,20 +403,15 @@ AJ$ = (function () {
 			if (AJ$['READY']) {
 				//Show Loading Logo/Brand Animation
 				if (AJ$['SHOWLOADER'] == true) {
-					cls('logo','replace','appear','vanish');
+					AJ$['cls']('logo','replace','appear','vanish');
 				}
 				
-				cls('wrapper','replace','vanish','appear');
+				AJ$['cls'](B$,'replace','vanish','appear');
 			}
 		}
 	}
 	
-	//temp fix until I rewrite the closure
-	AutoJigger['FILES'] = [];
-	AutoJigger['READY'] = false;
-	AutoJigger['SHOWLOADER'] = false;
-	
-	/**[Exports - Not the Object itselt, just the public functions]**/
+	/**[Exports - Not the Object itself or the private functions, just the public functions]**/
 	W$['vld'] = AutoJigger.vld;	
 	W$['chk'] = AutoJigger.chk;	
 	W$['gei'] = AutoJigger.gei;	
@@ -422,15 +421,32 @@ AJ$ = (function () {
 	W$['lds'] = AutoJigger.lds;	
 	W$['las'] = AutoJigger.las;	
 	
-	cls('wrapper','set','vanish');
+	/**[If a custom config is detect, load and use it]**/
+	if (typeof(window['AutoJiggerConfig']) == "function") {
+		var cfg = window['AutoJiggerConfig']();
+		if (W$['vld'](cfg)){
+			if (W$['vld'](cfg.showloader)) AutoJigger['SHOWLOADER']=cfg.showloader;
+			if (W$['vld'](cfg.framework)) AutoJigger['FRAMEWORK']=cfg.framework.toLowerCase();
+			if (W$['vld'](cfg.onready)&&typeof(cfg.onready)==="function")
+				AutoJigger['_ONREADY']=cfg.onready;
+			else
+				AutoJigger['_ONREADY']=function(){};			
+		}
+	}
 
+	/**[Display the loader if it is enabled]**/
 	if (AutoJigger['SHOWLOADER']){
-		cls('logo','set','appear');
+		AutoJigger['cls']('logo','replace','vanish','appear');
 	} else {
-		cls('logo','set','vanish');
+		AutoJigger['cls']('logo','replace','appear','vanish');
 	}
 	
-	/**[Start]**/
+	/**[temp fix until I rewrite the closure]**/
+	AutoJigger['FILES'] = [];
+	AutoJigger['READY'] = false;
+	AutoJigger['SHOWLOADER'] = false;
+				
+	/**[Load core framework/libraries - jQuery,Modernizr,Bootstrap and Font-Awesome]**/
 	W$['lds'](
 		'js', 
 		'jquery', 
@@ -447,6 +463,7 @@ AJ$ = (function () {
 		}, 
 		null
 	);		
-	
+
+	/**[All Done! Return Object]**/
 	return AutoJigger;
 })();
