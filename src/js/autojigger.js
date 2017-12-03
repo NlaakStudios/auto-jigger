@@ -4,8 +4,8 @@
 // ==/ClosureCompiler==
 
 /*!
- *  i2tm Labs Auto Jigger @andrewdonelson - //autojigger.i2tmlabs.com - @i2tmlabs
- *  License - Private - autojigger.i2tmlabs.com/license
+ *  Nlaak Studios Auto-Jigger @andrewdonelson - https://www.nlaak.com/#autojigger - @nlaakstudios
+ *  License - Apache 2.0
  */
 /*! Auto Jigger Core Javascript */
 AJ$ = (function () {
@@ -81,7 +81,7 @@ AJ$ = (function () {
 	W$['S$']=D$.scripts;
 	
 	var AutoJigger = {
-		VERSION : '3.2.0',
+		VERSION : '3.3.0',
 		LOADING : 0,
 		LOADED 	: 0,
 		FILES 	: [],
@@ -376,16 +376,15 @@ AJ$ = (function () {
 	W$['lds'](
 		'js', 
 		'jquery', 
-		'https://code.jquery.com/jquery-2.2.4.min.js', 
+		'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', 
 		true, 
 		'last', 
 		function(){
 			W$['las']([
-				'https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/Rx.js',
+				'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css',
 				'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
-				'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css',
-				'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css',
-				'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js'
+				'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+				'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'
 			])
 		}, 
 		null
