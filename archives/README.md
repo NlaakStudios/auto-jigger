@@ -1,8 +1,6 @@
-# Maestro
+# H5C3->Nano->Maestro->Auto->Jigger (2012-Present)
 
 ### Framework Manager / Project Loader
 
-Maestro was removed from the Nano Framework. Maestro is the main object or interface for the Nano Framework.
-The ultimate purpose for Maestro is to serve the nano Framework with a single line of code. Maestro also contains various helper functions and some enhancements - all under 20k.
+{description}
 
-[Learn More](https://github.com/NlaakALD/Maestro/wiki/Home)
