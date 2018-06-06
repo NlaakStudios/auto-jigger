@@ -9,7 +9,7 @@ good faith with other contributors and the community. No contribution is too
 small and all contributions are valued.
 
 This guide explains the process for contributing to the project's 
-`NlaakStudios/PHP-Blockchain` GitHub Repository and describes what to expect at each step.
+`NlaakStudios/auto-jigger` GitHub Repository and describes what to expect at each step.
 
 ## Code of Conduct
 
@@ -20,7 +20,7 @@ that *all* contributors are expected to follow. This code describes the
 
 ## Issues
 
-Issues in `NlaakStudios/PHP-Blockchain` are the primary means by which bug reports and
+Issues in `NlaakStudios/auto-jigger` are the primary means by which bug reports and
 general discussions are made.
 
 * [How to Contribute in Issues](./ISSUES.md#how-to-contribute-in-issues)
@@ -31,7 +31,7 @@ general discussions are made.
 ## Pull Requests
 
 Pull Requests are the way concrete changes are made to the code, documentation,
-dependencies, and tools contained in the `NlaakStudios/PHP-Blockchain` repository.
+dependencies, and tools contained in the `NlaakStudios/auto-jigger` repository.
 
 {TODO: Define how pull-request process}
 
