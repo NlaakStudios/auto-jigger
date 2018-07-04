@@ -1,1 +1,0 @@
-Starting Template for all new games
