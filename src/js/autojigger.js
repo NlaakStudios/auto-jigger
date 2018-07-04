@@ -145,7 +145,7 @@ AJ$ = (function () {
 			for (var i = 0;i<3;i++) {
 				arguments[i]=chk(arguments[i],false);
 				if (arguments[i]===false) {
-					if (console) console.log('Error')
+					if (console) console.log('Error');
 				}
 			}
 
@@ -164,7 +164,7 @@ AJ$ = (function () {
 				d=location.pathname + 'html/' + gfn($url) + '.inc' + gex($url);
 				return true;
 			} else {
-				return false
+				return false;
 			}
 			
 			a.id=arguments[1];
@@ -254,7 +254,7 @@ AJ$ = (function () {
 		 * @export
 		 */
 		gei : function ($p) {
-			return D$.getElementById($p)
+			return D$.getElementById($p);
 		},
 
 		/**
@@ -292,12 +292,12 @@ AJ$ = (function () {
 						break;
 						
 					case 'remove':
-						try{$el.classList.remove($c1)}catch(e){};
+						try{$el.classList.remove($c1)}catch(e){}
 						break;
 						
 					case 'replace': 
-						try{$el.classList.remove($c1)}catch(e){};
-						try{$el.classList.add($c2)}catch(e){};
+						try{$el.classList.remove($c1)}catch(e){}
+						try{$el.classList.add($c2)}catch(e){}
 						break;
 						
 					case 'toggle':
@@ -305,9 +305,8 @@ AJ$ = (function () {
 						break;
 				}
 			} catch(e) {
-				alert(e)
+				alert(e);
 			}
-			
 		},
 
 		/**
@@ -320,7 +319,58 @@ AJ$ = (function () {
 		 * @export 
 		 */
 		gex : function(a){
-			if (typeof a==='undefined'||a=='') return ''; else return /(?:\.([^.]+))?$/.exec(a)[1].toLowerCase()
+			if (typeof a==='undefined'||a=='') return ''; else return /(?:\.([^.]+))?$/.exec(a)[1].toLowerCase();
+		},
+
+		/**
+		 * Uses native javascript XMLHttpRequest GET
+		 *
+		 * @example
+		 * 
+		 * 	getJSON('http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20WHERE%20symbol%3D%27WRC%27&format=json&diagnostics=true&env=store://datatables.org/alltableswithkeys&callback',
+		 * 		function(err, data) {
+		 *			if (err !== null) {
+		 *				alert('Something went wrong: ' + err);
+		 *			} else {
+		 *				alert('Your query count: ' + data.query.count);
+		 *			}
+		 *		});
+		 *
+		 * @method get
+		 * @param {String}	url
+		 * @param {callback} callback	
+		 * @return (object) xhr.response
+		 * @memberof AutoJigger
+		 * @export 
+		 */
+		get : function(url, callback) {
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', url, true);
+			xhr.responseType = 'json';
+			xhr.onload = function() {
+				var status = xhr.status;
+				if (status === 200) {
+					callback(null, xhr.response);
+				} else {
+					callback(status, xhr.response);
+				}
+			};
+			xhr.send();
+		},
+
+		put : function(url, callback) {
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+			xhr.onload = function () {
+				var data = JSON.parse(xhr.responseText);
+				if (xhr.readyState == 4 && xhr.status == "201") {
+					console.table(data);
+				} else {
+					console.error(data);
+				}
+			};
+			xhr.send(json);
 		},
 
 		/**
@@ -333,7 +383,7 @@ AJ$ = (function () {
 		 * @export 
 		 */
 		gfn : function(a){
-			if (typeof a==='string')return a.substring(a.lastIndexOf("/")+1)
+			if (typeof a==='string')return a.substring(a.lastIndexOf("/")+1);
 		},
 
 		/**[Events - internal]**/
@@ -356,7 +406,7 @@ AJ$ = (function () {
 				cls('wrapper','replace','vanish','appear');
 			}
 		}
-	}
+	};
 	
 	//temp fix until I rewrite the closure
 	AutoJigger['FILES'] = [];
@@ -385,7 +435,7 @@ AJ$ = (function () {
 				'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
 				'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
 				'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'
-			])
+			]);
 		}, 
 		null
 	);		
