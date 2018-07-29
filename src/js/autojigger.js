@@ -153,12 +153,12 @@ AJ$ = (function () {
 				a = D$.createElement('script');
 				a.async = 0;
 				a.src = $url;
-				a.type = 'application/javascript';
+				//a.type = 'application/javascript';
 			} else if (arguments[0] == 'link' || arguments[0] == 'css') {
 				a = D$.createElement('link');
 				a.href = $url;
 				a.rel = 'stylesheet';
-				a.type = 'text/css';
+				//a.type = 'text/css';
 			} else if (arguments[0] == 'html') {
 				//Define path to html to include
 				d = location.pathname + 'html/' + gfn($url) + '.inc' + gex($url);
