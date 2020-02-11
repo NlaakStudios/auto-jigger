@@ -3,5 +3,5 @@ package autojigger
 import "testing"
 
 func TestAll(t *testing.T) {
-	println(AJMgr.RenderAsString())
+	println(autojigger.AJMgr.RenderAsString())
 }
